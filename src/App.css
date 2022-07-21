@@ -6,9 +6,78 @@
   box-sizing: border-box;
 }
 
+body {
+  color: white;
+  font-family: sans-serif;
+}
+
 .container {
   display: grid;
   place-content: center;
   height: 100vh;
   width: 100vw;
+  background-color: rgb(19, 19, 19);
+}
+
+.navbar {
+  background-color: rgb(0, 0, 0);
+  font-weight: bold;
+  position: absolute;
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: goldenrod 2px solid
+}
+
+.nav-left, .nav-right {
+  padding: 10px;
+}
+
+.crud-btn {
+  color: black;
+  background-color: rgb(212, 177, 86);
+  padding: 5px;
+  border: none;
+  border-radius: 2px;
+}
+
+tr {
+  border-bottom: 1px white solid;
+  margin-top: 5px;
+  height: 20px;
+}
+
+.table-btn {
+  margin: 0 1px 0 5px;
+}
+
+.bg-container {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(19, 19, 19, 0.544);
+}
+
+.form-container {
+  display: grid;
+  place-content: center;
+  height: 320px;
+  width: 300px;
+  background-color: rgba(19, 19, 19);
+  border-radius: 7px;
+  border: rgb(212, 177, 86) 1px solid ;
+  z-index: 1;
+}
+
+.outside {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
 }

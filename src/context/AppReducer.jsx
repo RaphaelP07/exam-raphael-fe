@@ -1,9 +1,9 @@
 export default (state, action) => {
   switch (action.type) {
-    case "USERS":
+    case "SET_USERS":
       return {
         ...state,
-        token: action.payload,
+        users: action.payload,
       };
     default:
       return state;

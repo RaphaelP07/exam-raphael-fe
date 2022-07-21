@@ -41,6 +41,7 @@ body {
   padding: 5px;
   border: none;
   border-radius: 2px;
+  margin: 0 1px 0 5px;
 }
 
 tr {
@@ -88,4 +89,37 @@ tr {
 
 .display-none {
   display: none;
+}
+
+table {
+  border: 1px gray solid;
+  border-radius: 7px;
+}
+
+thead{
+  border-bottom: 1px gray solid;
+  background-color: darkgrey;
+}
+
+td {
+  border-bottom: 1px gray solid;
+  padding: 7px;
+  width: min-content
+}
+
+tr:last-child > td {
+  border-bottom: none;
+}
+
+tr > td:last-child {
+  display: flex;
+  place-content: center;
+}
+
+.form-btn {
+  padding: 5px
+}
+
+.prompt {
+  padding: 20px
 }

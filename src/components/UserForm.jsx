@@ -77,7 +77,7 @@ const UserView = ({ user, setForm, setUser }) => {
 
   return (
     <form className="bg-container" onSubmit={onSubmit} noValidate>
-      <div className='outside' onClick={() => setForm(false)}></div>
+      <div className='outside' onClick={() => setForm(false)} onMouseUp={() => setUser(null)}></div>
       <div className='form-container'>
         <h1 className='form-title form'>
           {action}

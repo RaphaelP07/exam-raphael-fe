@@ -28,15 +28,17 @@ const DeletePrompt = ({ user, setPrompt, setMessage, setMesssageExists, setUser 
 
   return (
     <div className="prompt-container">
-      <div className="outside"></div>
+      <div className="outside" onClick={() => setPrompt(false)} onMouseUp={() => setUser(null)}></div>
       <div className="prompt">
         <h2>DELETE USER</h2>
+        <br />
         <div className="warning">
-          Are you sure you want to delete user {user.attributes.name}?
+          Are you sure you want to delete user {user === null ? '' : user.attributes.name}?
         </div>
-        <div className="buttons">
+        <br />
+        <div className="form-btn">
           <button className="crud-btn" onClick={() => deleteUser()}>CONTINUE</button>
-          <button className="crud-btn" onClick={() => setPrompt(false)}>CANCEL</button>
+          <button className="crud-btn" onClick={() => setPrompt(false)} onMouseUp={() => setUser(null)}>CANCEL</button>
         </div>
       </div>
     </div>

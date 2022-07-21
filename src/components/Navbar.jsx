@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = ({ setForm }) => {
   return (
-    <div>Navbar</div>
+    <div className='navbar'>
+      <div className="nav-left">exam-raphael</div>
+      <div className="nav-mid"></div>
+      <div className="nav-right">
+        <button className='crud-btn' onClick={() => setForm(true)} >ADD USER</button>
+      </div>
+    </div>
   )
 }
 

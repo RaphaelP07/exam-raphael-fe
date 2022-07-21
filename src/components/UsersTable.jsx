@@ -2,9 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { GlobalContext } from "../context/GlobalState";
 import axios from "axios";
 
-const UsersTable = ({ form, setForm, setUser }) => {
+const UsersTable = ({ setForm, setUser, setPrompt }) => {
   const { users, apiURL, setUsers } = useContext(GlobalContext);
-  const [prompt, setPrompt] = useState(false)
   const [action, setAction] = useState('')
 
   useEffect(() => {
@@ -21,10 +20,10 @@ const UsersTable = ({ form, setForm, setUser }) => {
     setForm(true)
   }
 
-  const userDelete = (id) => {
+  const userDelete = (user) => {
+    setUser(user)
     setPrompt(true)
   }
-
 
   return (
     <div className='users-table'>
@@ -61,7 +60,7 @@ const UsersTable = ({ form, setForm, setUser }) => {
                 <button className='crud-btn table-btn' onClick={() => userForm(user)}>
                   EDIT
                 </button>
-                <button className='crud-btn table-btn' onClick={() => userDelete(user.id)}>
+                <button className='crud-btn table-btn' onClick={() => userDelete(user)}>
                   DELETE
                 </button>
               </td>

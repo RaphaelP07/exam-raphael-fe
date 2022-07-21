@@ -1,20 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
 import axios from "axios";
 
 const UserView = ({ user, setForm, setUser }) => {
-  const navigate = useNavigate();
-  const { apiURL } = useContext(GlobalContext);
+  const { apiURL, setUsers } = useContext(GlobalContext);
   const [name, setName] = useState("");
   const [role, setRole] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [error, setError] = useState(false)
-  const [nameError, setNameError] = useState(false);
-  const [roleError, setRoleError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [phoneError, setPhoneError] = useState(false);
+  const [nameError, setNameError] = useState('hello');
+  const [roleError, setRoleError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const UserView = ({ user, setForm, setUser }) => {
     e.preventDefault();
 
     axios({
-      method: "put",
+      method: `${user === null ? 'post' : 'put'}`,
       url: `${apiURL}/users/${user === null ? '' : user.id}`,
       data: {
         name: name,
@@ -68,11 +66,15 @@ const UserView = ({ user, setForm, setUser }) => {
     }).then((res) => {
       setUser(null)
       setForm(false)
+      axios({
+        method: "get",
+        url: `${apiURL}/users`
+      }).then((res) => {
+        setUsers(res.data.data);
+      });
     }).catch((error) => {
-      if (error) {
-        setError(true)
-        console.log(error)
-      }
+      setError(true)
+      console.log(error)
     })
   }
 
@@ -87,7 +89,7 @@ const UserView = ({ user, setForm, setUser }) => {
           Name
         </div>
         <span className={error === false ? "display-none" : "text-error"}>
-          {message}
+          {nameError}
         </span>
         <input
           required

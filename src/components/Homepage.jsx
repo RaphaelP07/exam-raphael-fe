@@ -30,6 +30,7 @@ const Homepage = () => {
       {messageExists &&
       <MessagePrompt
         message={message}
+        setMessage={() => setMessage('')}
         setMessageExists={(set) => setMessageExists(set)} />}
       <Navbar
         form={form}

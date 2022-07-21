@@ -9,10 +9,7 @@ const UserView = ({ user, setForm, setUser }) => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [error, setError] = useState(false)
-  const [nameError, setNameError] = useState('hello');
-  const [roleError, setRoleError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
+  const [errors, setErrors] = useState([])
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -74,7 +71,7 @@ const UserView = ({ user, setForm, setUser }) => {
       });
     }).catch((error) => {
       setError(true)
-      console.log(error)
+      setErrors(error.response.data)
     })
   }
 
@@ -89,7 +86,7 @@ const UserView = ({ user, setForm, setUser }) => {
           Name
         </div>
         <span className={error === false ? "display-none" : "text-error"}>
-          {nameError}
+          {errors.name}
         </span>
         <input
           required
@@ -103,6 +100,9 @@ const UserView = ({ user, setForm, setUser }) => {
         <div className="input-label form">
           Role
         </div>
+        <span className={error === false ? "display-none" : "text-error"}>
+          {errors.role}
+        </span>
         <select id="role" value={role} onChange={onChange}>
           <option value=""></option>
           <option value="superadmin">superadmin</option>
@@ -112,6 +112,9 @@ const UserView = ({ user, setForm, setUser }) => {
         <div className="input-label form">
           Email
         </div>
+        <span className={error === false ? "display-none" : "text-error"}>
+          {errors.email}
+        </span>
         <input
           required
           className="input-form form"
@@ -124,6 +127,9 @@ const UserView = ({ user, setForm, setUser }) => {
         <div className="input-label form">
           Phone
         </div>
+        <span className={error === false ? "display-none" : "text-error"}>
+          {errors.phone}
+        </span>
         <input
           required
           className="input-form form"

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MessagePrompt = ({ message, setMessageExists }) => {
+const MessagePrompt = ({ message, setMessageExists, setMessage }) => {
   return (
     <div className="prompt-container">
       <div className="outside"></div>
@@ -10,7 +10,10 @@ const MessagePrompt = ({ message, setMessageExists }) => {
           {message}
         </div>
         <div className="buttons">
-          <button className="crud-btn" onClick={() => setMessageExists(false)}>GO BACK</button>
+          <button 
+            className="crud-btn" 
+            onClick={() => setMessageExists(false)}
+            onMouseUp={() => setMessage()}>GO BACK</button>
         </div>
       </div>
     </div>

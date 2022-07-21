@@ -81,3 +81,11 @@ tr {
   width: 100vw;
   z-index: 0;
 }
+
+.text-error {
+  color: rgb(255, 136, 136);
+}
+
+.display-none {
+  display: none;
+}
